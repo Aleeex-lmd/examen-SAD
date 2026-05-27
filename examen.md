@@ -99,9 +99,13 @@ Sobre el volcado de memoria y el de disco de una máquina Windows que realizaste
 
 1. Identifica los cinco últimos archivos abiertos por algún usuario. (0,5 puntos)
 
+![alt text](img/bloque4_ejercicio1_img1.png)
+
 2. Determina cual fue el último dispositivo USB externo conectado y la fecha de conexión (0,5 puntos)
 
 3. Últimos cinco archivos eliminados, incluyendo nombre, ruta y fecha de eliminación (0,5 puntos)
+
+![alt text](img/bloque4_ejercicio3_img1.png)
 
 4. Conexiones de red activas y direcciones IP involucradas. (0,5 puntos)
 
@@ -111,11 +115,19 @@ Sobre el volcado de memoria y el de disco de una máquina Windows que realizaste
 
 5. Nombre del último usuario logueado. (1 punto)
 
+![alt text](img/bloque4_ejercicio5_img1.png)
+
 6. Listado de programas que se arrancan en el inicio del sistema. (1 punto)
+
+![alt text](img/bloque4_ejercicio6_img1.png)
 
 7. Procesos ocultos o inyectados en otros procesos (0,5 puntos)
 
+![alt text](img/bloque4_ejercicio7_img1.png)
+
 8. Pruebas de ejecución reciente de PowerShell (0,5 puntos)
+
+![alt text](img/bloque4_ejercicio8_img1.png)
 
 Sobre el volcado de memoria y el de disco de una máquina Linux que realizaste para la práctica, obten si es posible las siguientes informaciones:
 
