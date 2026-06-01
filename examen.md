@@ -28,7 +28,9 @@ john --wordlist=diccionario_examen_sad.txt hashes_examen_sad.txt
 
 ![alt text](img/bloque1_ejercicio1_img2.png)
 
+# 2. (2 puntos) Instala una herramienta de integridad de datos en Linux y cambia la configuración para que envíe las alertas relacionadas con modificaciones o borrados de ficheros en el directorio /bin a la dirección raulpruebas21@gmail.com. Haz las capturas de pantalla necesarias para acreditar el cambio y haz que envíe alguna alerta para demostrar el funcionamiento.
 
+![alt text](img/bloque1_ejercicio2_img1.png)
 
 
 ## 5. (2 puntos) Obten toda la información que puedas legalmente sobre un dominio de tu elección que no sea el del instituto (no uses técnicas de reconocimiento activo). Explica las operaciones realizadas y muestra las capturas con la información obtenida.
