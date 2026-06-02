@@ -145,7 +145,7 @@ Sobre el volcado de memoria y el de disco de una máquina Linux que realizaste p
 
 12. Servicios activos y en ejecución. (0,5 puntos)
 
-![alt text](img/bloque4_ejercicio16_img1.png)
+![alt text](img/bloque4_ejercicio12_img1.png)
 
 13. Muestra los usuarios del sistema y su historial de comandos (1 punto)
 
