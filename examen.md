@@ -37,6 +37,45 @@ john --wordlist=diccionario_examen_sad.txt hashes_examen_sad.txt
 
 # Bloque II. Criptografía
 
+## 1. Realiza las siguientes operaciones:
+
+### a) Crea una autoridad certificadora. Configura dicha autoridad de forma que para que una CSR sea válida deba aportarse la dirección postal del solicitante y deba coincidir el pais. La provincia por defecto debe ser Sevilla y la localidad por defecto Dos Hermanas. El nombre de la organización debe ser IESGN. La contraseña debe tener un mínimo de 8 caracteres.
+
+![alt text](img/bloque2_ejercicio1_img1.png)
+
+![alt text](img/bloque2_ejercicio1_img2.png)
+
+![alt text](img/bloque2_ejercicio1_img3.png)
+
+![alt text](img/bloque2_ejercicio1_img4.png)
+
+![alt text](img/bloque2_ejercicio1_img5.png)
+
+![alt text](img/bloque2_ejercicio1_img6.png)
+
+b) Genera una CSR para un servidor HTTPS que deberás montar con Apache
+
+![alt text](img/bloque2_ejercicio1_img7.png)
+
+![alt text](img/bloque2_ejercicio1_img8.png)
+
+c) Configura el servidor Apache adecuadamente con la información proporcionada por la autoridad certificadora como respuesta a la CSR.
+
+![alt text](img/bloque2_ejercicio1_img9.png)
+
+![alt text](img/bloque2_ejercicio1_img10.png)
+
+![alt text](img/bloque2_ejercicio1_img11.png)
+
+![alt text](img/bloque2_ejercicio1_img12.png)
+
+![alt text](img/bloque2_ejercicio1_img13.png)
+
+Documenta el proceso completo, demostrando que el servidor es accesible por HTTPS en el puerto 443 con su certificado recién firmado por la CA (Debes mostrar la fecha de creación del certificado). 
+
+(6 puntos)
+
+
 ## 2. Realiza las siguientes operaciones (4 puntos):
 
 ### a) Crea un par de claves y sube tu clave pública al servidor de claves de Ubuntu. Adjunta captura que demuestre que la clave se ha subido correctamente.
@@ -94,6 +133,8 @@ Lo cifraremos usando el siguiente comando
 ```
 openssl enc -aes-256-cbc -pbkdf2 -salt -in mensaje-cifrado-examen-sad.txt -out mensaje-cifrado-examen-sad.txt.enc -k "ThisIsMyLastChance"
 ```
+
+openssl enc -d -aes-256-cbc -pbkdf2 -salt -in mensaje-cifrado-examen-sad.txt.enc -k "ThisIsMyLastChance"
 
 ## Bloque IV. Informática Forense
 
@@ -179,69 +220,71 @@ En dichas capturas debe quedar de manifiesto que es la máquina del alumno y la 
 
 ## 1. (1 punto) Explica en qué situación debes usar la acción MASQUERADE en nftables y escribe un ejemplo del comando en el que se emplea habitualmente.
 
-Debes usar la acción masquerade cuando necesitas configurar un enmascaramiento de red (Source NAT o SNAT) para que los equipos de tu red local puedan acceder a Internet, pero la dirección IP pública de tu interfaz de salida es dinámica (por ejemplo, asignada por DHCP).
+Se usa masquerade en nftble cuando la ip publica que se usa para conectarse a internet es una ip dinámica, es decir que esta puede cambiar por lo que habria que cambiar la red cada vez que la ip cambia, lo que hacemos es que en vez de poner una direccion publica ponemos masquerade que buesca la ip publica actual y usa esa
 
-A diferencia del SNAT normal (donde especificas una dirección IP de salida fija), masquerade lee automáticamente la dirección IP que tiene asignada la interfaz de salida en el momento de enviar el paquete. Si tu proveedor de Internet cambia tu IP pública, masquerade se adapta automáticamente sin que se rompa la conexión. Si tuvieras una IP pública estática, es mejor usar snat.
-
-Habitualmente, esta regla se aplica en una tabla de tipo nat y dentro de una cadena tipo postrouting (justo antes de que el paquete abandone el equipo).
-La forma más sencilla de implementarlo es la siguiente:
 
 ```bash
 nft add rule ip nat postrouting oifname "eth0" masquerade
 ```
 
 ## 2. (3 puntos) Escribe los comandos necesarios para poner un cortafuegos de nodo nftables en un servidor con política DROP por defecto y permitir las siguientes operaciones:
-	
+
+![alt text](img/bloque5_ejercicio2_img1.png)
+
 ### Obtención de configuración IP por DHCP
 
-```bash
-sudo nft add rule ip filtro output udp sport 68 udp dport 67 accept
-sudo nft add rule ip filtro input udp sport 67 udp dport 68 accept
-```
+![alt text](img/bloque5_ejercicio2_img2.png)
 
-### Actualización de paquetería Debian desde las 7 a las 10 de la mañana
+![alt text](img/bloque5_ejercicio2_img3.png)
 
-```bash
-sudo nft add rule ip filtro output udp dport 53 hour "07:00"-"10:00" accept
-sudo nft add rule ip filtro output tcp dport 53 hour "07:00"-"10:00" accept
-sudo nft add rule ip filtro output tcp dport { 80, 443 } hour "07:00"-"10:00" accept
-```
+![alt text](img/bloque5_ejercicio2_img4.png)
+
+
+### Actualización de paquetería Debian desde las 12 a las 13 de la mañana
+
+![alt text](img/bloque5_ejercicio2_img5.png)
+
+![alt text](img/bloque5_ejercicio2_img6.png)
+
+![alt text](img/bloque5_ejercicio2_img7.png)
+
 
 ### Acceso desde el exterior al servidor Apache instalado en el propio servidor, evitando ataques de Denegación de Servicio
 
-```bash
-# Lo que haremos el limitar el limite de conexiones a 10 por minuto, esto hara que sea imposible hacer un ataque de denegacion de servicios ya que cuando la misma ip haga la undecima conexion en menos de 10 minutos se dropea
-nft add rule ip filtro input tcp dport 80 ct state new meter tcp-conn-limit-80 { ip saddr timeout 10m limit rate over 10/minute } drop
-nft add rule ip filtro input tcp dport 80 accept
-nft add rule ip filtro input tcp dport 443 ct state new meter tcp-conn-limit-443 { ip saddr timeout 10m limit rate over 10/minute } drop
-nft add rule ip filtro input tcp dport 443 accept
-```
+![alt text](img/bloque5_ejercicio2_img8.png)
 
-### Acceso desde la máquina con MAC 00:11:22:33:44:55:66 al servicio de MariaDB instalado en el propio servidor
+![alt text](img/bloque5_ejercicio2_img9.png)
 
-```bash
-nft add rule ip filtro input ether saddr 00:11:22:33:44:55 tcp dport 3306 accept
-```
+
+### Acceso desde la máquina con MAC 52:54:00:50:36:89 al servicio de MariaDB instalado en el propio servidor
+
+![alt text](img/bloque5_ejercicio2_img10.png)
+
+![alt text](img/bloque5_ejercicio2_img11.png)
+
+![alt text](img/bloque5_ejercicio2_img12.png)
 
 ### Navegación web a todas las páginas excepto a las alojadas en 59.1.22.3
 
-```bash
-# Primero ponemos el bloqueo de esa ip por ambos pueros y luego permitimos el acceso a todas, si lo hiciesemos al reves permitiria el acceso a todas y la otra red la ignoraría
-nft add rule ip filtro output ip daddr 59.1.22.3 tcp dport { 80, 443 } drop
-nft add rule ip filtro output tcp dport { 80, 443 } accept
-```
+![alt text](img/bloque5_ejercicio2_img13.png)
 
-### Comunicación por ping hacia y desde las máquinas de la 192.168.1.10 a la 192.168.1.100
+![alt text](img/bloque5_ejercicio2_img14.png)
 
-```bash
-# Permitimos que nuestra maquina pueda hacer ping a las otras máquinas
-nft add rule ip filtro output ip daddr 192.168.1.10-192.168.1.100 icmp type echo-request accept
-nft add rule ip filtro input ip saddr 192.168.1.10-192.168.1.100 icmp type echo-reply accept
+![alt text](img/bloque5_ejercicio2_img15.png)
 
-# Y despues permitims que nos hagan ping
-nft add rule ip filtro input ip saddr 192.168.1.10-192.168.1.100 icmp type echo-request accept
-nft add rule ip filtro output ip daddr 192.168.1.10-192.168.1.100 icmp type echo-reply accept
-```
+![alt text](img/bloque5_ejercicio2_img16.png)
+
+### Comunicación por ping hacia y desde las máquinas de la 192.168.122.1 a la 192.168.122.100
+
+![alt text](img/bloque5_ejercicio2_img17.png)
+
+![alt text](img/bloque5_ejercicio2_img18.png)
+
+![alt text](img/bloque5_ejercicio2_img19.png)
+
+![alt text](img/bloque5_ejercicio2_img20.png)
+
+![alt text](img/bloque5_ejercicio2_img21.png)
 
 ## 3. Supon que dispones del siguiente escenario con las direcciones indicadas en la tabla que se encuentra a continuación:
 
