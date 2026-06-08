@@ -43,6 +43,8 @@ john --wordlist=diccionario_examen_sad.txt hashes_examen_sad.txt
 
 ![alt text](img/bloque2_ejercicio1_img1.png)
 
+![alt text](img/bloque2_ejercicio1_img0.png)
+
 ![alt text](img/bloque2_ejercicio1_img2.png)
 
 ![alt text](img/bloque2_ejercicio1_img3.png)
