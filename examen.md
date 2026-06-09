@@ -224,6 +224,12 @@ En dichas capturas debe quedar de manifiesto que es la máquina del alumno y la 
 
 Se usa masquerade en nftble cuando la ip publica que se usa para conectarse a internet es una ip dinámica, es decir que esta puede cambiar por lo que habria que cambiar la red cada vez que la ip cambia, lo que hacemos es que en vez de poner una direccion publica ponemos masquerade que buesca la ip publica actual y usa esa
 
+iptables -t nat -A POSTROUTING -s 192.168.1.0/24 -o eth0 -j MASQUERADE
+
+o 
+
+iptables -t nat -A POSTROUTING -s 192.168.1.0/24 -o eth0 -j SNAT --to-source 1.1.1.1
+
 
 ```bash
 nft add rule ip nat postrouting oifname "eth0" masquerade
