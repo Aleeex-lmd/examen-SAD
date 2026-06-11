@@ -28,12 +28,148 @@ john --wordlist=diccionario_examen_sad.txt hashes_examen_sad.txt
 
 ![alt text](img/bloque1_ejercicio1_img2.png)
 
-# 2. (2 puntos) Instala una herramienta de integridad de datos en Linux y cambia la configuración para que envíe las alertas relacionadas con modificaciones o borrados de ficheros en el directorio /bin a la dirección raulpruebas21@gmail.com. Haz las capturas de pantalla necesarias para acreditar el cambio y haz que envíe alguna alerta para demostrar el funcionamiento.
+## 2. (2 puntos) Instala una herramienta de integridad de datos en Linux y cambia la configuración para que envíe las alertas relacionadas con modificaciones o borrados de ficheros en el directorio /bin a la dirección raulpruebas21@gmail.com. Haz las capturas de pantalla necesarias para acreditar el cambio y haz que envíe alguna alerta para demostrar el funcionamiento.
 
 ![alt text](img/bloque1_ejercicio2_img1.png)
 
 
 ## 5. (2 puntos) Obten toda la información que puedas legalmente sobre un dominio de tu elección que no sea el del instituto (no uses técnicas de reconocimiento activo). Explica las operaciones realizadas y muestra las capturas con la información obtenida.
+
+- Usando whois podemos ver toda la información acerca del dominio 
+
+```bash
+┌───(alex@Capriccio)-[~]
+└─$ whois hytale.com
+   Domain Name: HYTALE.COM
+   Registry Domain ID: 2020396445_DOMAIN_COM-VRSN
+   Registrar WHOIS Server: whois.dynadot.com
+   Registrar URL: http://www.dynadot.com
+   Updated Date: 2025-11-15T00:25:49Z
+   Creation Date: 2016-04-09T23:11:05Z
+   Registry Expiry Date: 2027-04-09T23:11:05Z
+   Registrar: Dynadot Inc
+   Registrar IANA ID: 472
+   Registrar Abuse Contact Email: abuse@dynadot.com
+   Registrar Abuse Contact Phone: +16502620100
+   Domain Status: clientTransferProhibited https://icann.org/epp#clientTransferProhibited
+   Name Server: ARIADNE.NS.CLOUDFLARE.COM
+   Name Server: TONY.NS.CLOUDFLARE.COM
+   DNSSEC: unsigned
+   URL of the ICANN Whois Inaccuracy Complaint Form: https://www.icann.org/wicf/
+>>> Last update of whois database: 2026-06-11T09:39:22Z <<<
+
+For more information on Whois status codes, please visit https://icann.org/epp
+
+NOTICE: The expiration date displayed in this record is the date the
+registrar's sponsorship of the domain name registration in the registry is
+currently set to expire. This date does not necessarily reflect the expiration
+date of the domain name registrant's agreement with the sponsoring
+registrar.  Users may consult the sponsoring registrar's Whois database to
+view the registrar's reported date of expiration for this registration.
+
+TERMS OF USE: You are not authorized to access or query our Whois
+database through the use of electronic processes that are high-volume and
+automated except as reasonably necessary to register domain names or
+modify existing registrations; the Data in VeriSign Global Registry
+Services' ("VeriSign") Whois database is provided by VeriSign for
+information purposes only, and to assist persons in obtaining information
+about or related to a domain name registration record. VeriSign does not
+guarantee its accuracy. By submitting a Whois query, you agree to abide
+by the following terms of use: You agree that you may use this Data only
+for lawful purposes and that under no circumstances will you use this Data
+to: (1) allow, enable, or otherwise support the transmission of mass
+unsolicited, commercial advertising or solicitations via e-mail, telephone,
+or facsimile; or (2) enable high volume, automated, electronic processes
+that apply to VeriSign (or its computer systems). The compilation,
+repackaging, dissemination or other use of this Data is expressly
+prohibited without the prior written consent of VeriSign. You agree not to
+use electronic processes that are automated and high-volume to access or
+query the Whois database except as reasonably necessary to register
+domain names or modify existing registrations. VeriSign reserves the right
+to restrict your access to the Whois database in its sole discretion to ensure
+operational stability.  VeriSign may restrict or terminate your access to the
+Whois database for failure to abide by these terms of use. VeriSign
+reserves the right to modify these terms at any time.
+
+The Registry database contains ONLY .COM, .NET, .EDU domains and
+Registrars.
+Domain Name: HYTALE.COM
+Registry Domain ID: 2020396445_DOMAIN_COM-VRSN
+Registrar WHOIS Server: whois.dynadot.com
+Registrar URL: http://www.dynadot.com
+Updated Date: 2025-11-15T00:25:49.0Z
+Creation Date: 2016-04-09T23:11:05.0Z
+Registrar Registration Expiration Date: 2027-04-09T23:11:05.0Z
+Registrar: DYNADOT LLC
+Registrar IANA ID: 472
+Registrar Abuse Contact Email: abuse@dynadot.com
+Registrar Abuse Contact Phone: +1.6502620100
+Domain Status: clientTransferProhibited https://icann.org/epp#clientTransferProhibited
+Registry Registrant ID: 
+Registrant Name: REDACTED FOR PRIVACY
+Registrant Organization: Super Privacy Service LTD c/o Dynadot
+Registrant Street: PO Box 701
+Registrant Street: 
+Registrant City: San Mateo
+Registrant State/Province: California
+Registrant Postal Code: 94401
+Registrant Country: US
+Registrant Phone: +1.6505854708
+Registrant Email: https://www.dynadot.com/domain/contact-request?domain=hytale.com
+Registry Admin ID: 
+Admin Name: REDACTED FOR PRIVACY
+Admin Organization: Super Privacy Service LTD c/o Dynadot
+Admin Street: PO Box 701
+Admin Street: 
+Admin City: San Mateo
+Admin State/Province: California
+Admin Postal Code: 94401
+Admin Country: US
+Admin Phone: +1.6505854708
+Admin Email: https://www.dynadot.com/domain/contact-request?domain=hytale.com
+Registry Tech ID: 
+Tech Name: REDACTED FOR PRIVACY
+Tech Organization: Super Privacy Service LTD c/o Dynadot
+Tech Street: PO Box 701
+Tech Street: 
+Tech City: San Mateo
+Tech State/Province: California
+Tech Postal Code: 94401
+Tech Country: US
+Tech Phone: +1.6505854708
+Tech Email: https://www.dynadot.com/domain/contact-request?domain=hytale.com
+Name Server: ariadne.ns.cloudflare.com
+Name Server: tony.ns.cloudflare.com
+DNSSEC: unsigned
+URL of the ICANN WHOIS Data Problem Reporting System: http://wdprs.internic.net/
+>>> Last update of WHOIS database: 2025-11-14 16:25:49 -0800 <<<
+
+```
+
+- Con el siguiente comando podemos ver los dominios y las direciones ip asociadas
+
+![alt text](img/bloque1_ejercicio5_img1.png)
+
+
+- Tambien podemos ver los registros de correos
+
+![alt text](image.png)
+
+- Y tambien vemos los servidores que se encargan de gestionar los dominios
+
+
+![alt text](image-2.png)
+
+
+- Con DNSdumster vemos un esquema de como esta organizado
+
+![alt text](image-3.png)
+
+- Con shodan podriamos ver las maquinas expuestas pero en este caso no hay ninguna asi que usaremos otro
+
+![](image-4.png)
+
+
 
 # Bloque II. Criptografía
 
